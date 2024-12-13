@@ -1,0 +1,55 @@
+[gd_scene load_steps=10 format=3 uid="uid://cwh4ci07frlyi"]
+
+[ext_resource type="Texture2D" uid="uid://br5atdv0bxt1p" path="res://assets/kenney_scribble-dungeons/PNG/Double (128px)/campfire.png" id="1_66trh"]
+[ext_resource type="Script" path="res://scenes/enemies/enemy/enemy.gd" id="1_ktc41"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mwnm8"]
+radius = 49.0102
+
+[sub_resource type="Curve" id="Curve_de56o"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.662252, 0), -2.73773, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_hn7e1"]
+curve = SubResource("Curve_de56o")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_wlgjy"]
+lifetime_randomness = 0.1
+particle_flag_disable_z = true
+spread = 180.0
+initial_velocity_min = 7.58
+initial_velocity_max = 46.69
+gravity = Vector3(0, 0, 0)
+alpha_curve = SubResource("CurveTexture_hn7e1")
+hue_variation_min = -0.03
+hue_variation_max = 0.09
+
+[sub_resource type="Gradient" id="Gradient_jh4e3"]
+offsets = PackedFloat32Array(0, 0, 1)
+colors = PackedColorArray(0.919281, 4.47616e-06, 1.15514e-06, 1, 0.862139, 0.358014, 1.92523e-07, 1, 0.814423, 0.610156, 3.85046e-07, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_rjjnm"]
+gradient = SubResource("Gradient_jh4e3")
+width = 12
+height = 12
+fill_from = Vector2(0.364679, 1)
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_vhli3"]
+diffuse_texture = SubResource("GradientTexture2D_rjjnm")
+
+[node name="Enemy" type="CharacterBody2D"]
+collision_layer = 8
+collision_mask = 31
+script = ExtResource("1_ktc41")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_66trh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_mwnm8")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+amount = 3
+process_material = SubResource("ParticleProcessMaterial_wlgjy")
+texture = SubResource("CanvasTexture_vhli3")
+lifetime = 5.0

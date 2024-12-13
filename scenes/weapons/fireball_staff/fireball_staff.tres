@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Weapon" load_steps=3 format=3 uid="uid://dnk5pa37ogr55"]
+
+[ext_resource type="Texture2D" uid="uid://k4ppvwbrdsrt" path="res://assets/kenney_scribble-dungeons/PNG/Double (128px)/Items/weapon_staff.png" id="1_f804c"]
+[ext_resource type="Script" path="res://scenes/weapons/weapon.gd" id="1_too8u"]
+
+[resource]
+script = ExtResource("1_too8u")
+icon = ExtResource("1_f804c")
+damage = 0
+weapon_name = 0

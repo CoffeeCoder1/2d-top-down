@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://8tegcy7gvwm3"]
+
+[ext_resource type="Script" path="res://scenes/main/main.gd" id="1_5331o"]
+[ext_resource type="PackedScene" uid="uid://dyvpoojdv1x56" path="res://scenes/player/player.tscn" id="1_cwqq6"]
+[ext_resource type="PackedScene" uid="uid://cwh4ci07frlyi" path="res://scenes/enemies/enemy/enemy.tscn" id="3_2mdxl"]
+[ext_resource type="PackedScene" uid="uid://th3h7c1pok6n" path="res://scenes/enemies/enemy_spawner/enemy_spawner.tscn" id="5_rcauu"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_5331o")
+
+[node name="Player" parent="." instance=ExtResource("1_cwqq6")]
+
+[node name="EnemySpawner" parent="." node_paths=PackedStringArray("target_node") instance=ExtResource("5_rcauu")]
+enemy_prefab = ExtResource("3_2mdxl")
+spawn_time = 0.5
+spawn_path = NodePath("../Enemies")
+target_node = NodePath("../Player")
+
+[node name="Enemies" type="Node2D" parent="."]

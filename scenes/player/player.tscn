@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://dyvpoojdv1x56"]
+
+[ext_resource type="Script" path="res://scenes/player/player.gd" id="1_78oyp"]
+[ext_resource type="Texture2D" uid="uid://800oqfln6beo" path="res://assets/kenney_scribble-dungeons/PNG/Double (128px)/Characters/purple_character.png" id="1_e1b3o"]
+[ext_resource type="PackedScene" uid="uid://b0fpdmj2t4fah" path="res://scenes/projectile/projectile.tscn" id="2_t7wvb"]
+[ext_resource type="Texture2D" uid="uid://bs0fx3yle1k1b" path="res://assets/kenney_scribble-dungeons/PNG/Double (128px)/Characters/purple_hand.png" id="3_8f4l7"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hs7nb"]
+radius = 42.0
+
+[node name="Player" type="CharacterBody2D"]
+collision_mask = 62
+script = ExtResource("1_78oyp")
+projectile_prefab = ExtResource("2_t7wvb")
+
+[node name="Body" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+texture = ExtResource("1_e1b3o")
+
+[node name="LeftHand" type="Sprite2D" parent="Body"]
+position = Vector2(52, -44)
+texture = ExtResource("3_8f4l7")
+
+[node name="LeftHandSpawnPoint" type="Marker2D" parent="Body/LeftHand"]
+unique_name_in_owner = true
+
+[node name="RightHand" type="Sprite2D" parent="Body"]
+position = Vector2(52, 45)
+texture = ExtResource("3_8f4l7")
+flip_v = true
+
+[node name="RightHandSpawnPoint" type="Marker2D" parent="Body/RightHand"]
+unique_name_in_owner = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_hs7nb")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.75, 0.75)

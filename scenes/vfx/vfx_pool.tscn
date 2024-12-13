@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://cv4gpc286swj1"]
+
+[ext_resource type="Script" path="res://scenes/vfx/vfx_pool.gd" id="1_ueoe3"]
+[ext_resource type="PackedScene" uid="uid://b6fd44k662te2" path="res://scenes/explosions/explosion_1/explosion_1.tscn" id="2_sx0jf"]
+
+[node name="VfxPool" type="Node2D"]
+script = ExtResource("1_ueoe3")
+explosion_prefab = ExtResource("2_sx0jf")
